@@ -81,4 +81,24 @@ public class LoginTests extends BasicTest{
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "/login",
                 "Should be on login page");
     }
+
+    @Test(priority = 5, retryAnalyzer = RetryAnalyzer.class)
+    public void login(){
+        String email = "admin@admin.com";
+        String password = "12345";
+
+        navPage.clickOnLoginButton();
+
+        wait
+                .withMessage("Url should be " + baseUrl + "/login")
+                .until(ExpectedConditions.urlContains("/login"));
+
+        loginPage.enterUserEmail(email);
+        loginPage.enterUserPassword(password);
+        loginPage.clickOnLoginButton();
+
+        wait
+                .withMessage("Url should be " + baseUrl + "/home")
+                .until(ExpectedConditions.urlContains("/home"));
+    }
 }
