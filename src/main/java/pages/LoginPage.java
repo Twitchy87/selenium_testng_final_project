@@ -16,6 +16,10 @@ public class LoginPage extends BasicPage{
     public String getEmailInputType(){
         return getEmailInput().getAttribute("type");
     }
+    public void enterUserEmail(String email){
+        getEmailInput().clear();
+        getEmailInput().sendKeys(email);
+    }
 
     public WebElement getPasswordInput(){
         return driver.findElement(By.id("password"));
@@ -23,5 +27,15 @@ public class LoginPage extends BasicPage{
     public String getPasswordInputType(){
         return getPasswordInput().getAttribute("type");
     }
+    public void enterUserPassword(String password){
+        getPasswordInput().clear();
+        getPasswordInput().sendKeys(password);
+    }
 
+    public WebElement getLoginButton(){
+        return driver.findElement(By.cssSelector("[type='submit']"));
+    }
+    public void clickOnLoginButton(){
+        getLoginButton().click();
+    }
 }
