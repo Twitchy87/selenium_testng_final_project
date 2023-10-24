@@ -57,4 +57,28 @@ public class LoginTests extends BasicTest{
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "/login",
                 "Should be on login page");
     }
+
+    @Test(priority = 4, retryAnalyzer = RetryAnalyzer.class)
+    public void displaysErrorsWhenPasswordIsWrong(){
+        String email = "admin@admin.com";
+        String password = "password123";
+
+        navPage.clickOnLoginButton();
+
+        wait
+                .withMessage("Url should be " + baseUrl + "/login")
+                .until(ExpectedConditions.urlContains("/login"));
+
+        loginPage.enterUserEmail(email);
+        loginPage.enterUserPassword(password);
+        loginPage.clickOnLoginButton();
+
+        messagePopUpPage.waitForErrorPopUpToBeVisible();
+        Assert.assertEquals(messagePopUpPage.getErrorPopUpMessage(),
+                "Wrong password",
+                "Error message should be \"Wrong password\"");
+
+        Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "/login",
+                "Should be on login page");
+    }
 }
