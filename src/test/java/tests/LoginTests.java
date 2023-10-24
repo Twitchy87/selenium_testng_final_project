@@ -101,4 +101,31 @@ public class LoginTests extends BasicTest{
                 .withMessage("Url should be " + baseUrl + "/home")
                 .until(ExpectedConditions.urlContains("/home"));
     }
+
+    @Test(priority = 6, retryAnalyzer = RetryAnalyzer.class)
+    public void logout(){
+        String email = "admin@admin.com";
+        String password = "12345";
+
+        navPage.clickOnLoginButton();
+
+        wait
+                .withMessage("Url should be " + baseUrl + "/login")
+                .until(ExpectedConditions.urlContains("/login"));
+
+        loginPage.enterUserEmail(email);
+        loginPage.enterUserPassword(password);
+        loginPage.clickOnLoginButton();
+
+        wait
+                .withMessage("Url should be " + baseUrl + "/home")
+                .until(ExpectedConditions.urlContains("/home"));
+
+        navPage.waitForLogoutButtonToBeVisible();
+        navPage.clickOnLogoutButton();
+
+        wait
+                .withMessage("Url should be " + baseUrl + "/login")
+                .until(ExpectedConditions.urlContains("/login"));
+    }
 }
