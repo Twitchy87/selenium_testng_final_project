@@ -55,4 +55,25 @@ public class NavPage extends BasicPage{
     public void clickOnSignupButton(){
         getSignupButton().click();
     }
+
+    public WebElement getAdminButton(){
+        return driver.findElement(By.className("btnAdmin"));
+    }
+    public void clickOnAdminButton(){
+        getAdminButton().click();
+    }
+
+    public void waitForAdminMenuToBeVisible(){
+        wait
+                .withMessage("Admin menu should be visible.")
+                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".v-menu__content .v-list")));
+    }
+
+    public WebElement getCitiesButton(){
+        return driver.findElement(By.className("btnAdminCities"));
+    }
+    public void clickOnCitiesButton(){
+        getCitiesButton().click();
+    }
+
 }
