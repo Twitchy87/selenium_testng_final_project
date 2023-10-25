@@ -42,4 +42,13 @@ public class MessagePopUpPage extends BasicPage{
         getCloseNotificationButton().click();
     }
 
+    public void waitForSuccessfulPopUpToBeVisible(){
+        wait.withMessage("Successful pop up should be visible.")
+                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".v-snack__wrapper.success")));
+    }
+
+    public String getSuccessfulPopUpMessage(){
+        return driver.findElement(By.cssSelector(".success .v-snack__content")).getText();
+    }
+
 }
