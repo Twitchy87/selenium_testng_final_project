@@ -21,6 +21,25 @@ public class MessagePopUpPage extends BasicPage{
         return driver.findElement(By.tagName("li")).getText();
     }
 
+    public WebElement getCloseErrorButton(){
+        return driver.findElement(By.cssSelector(".v-snack__wrapper .v-btn"));
+    }
 
+    public void waitForNotificationPopUpToBeVisible(){
+        wait
+                .withMessage("Notification pop up should be visible.")
+                .until(ExpectedConditions.visibilityOfElementLocated(By.className("v-dialog")));
+    }
+
+    public String getNotificationPopUpTitle(){
+        return driver.findElement(By.className("dlgVerifyAccount")).getText();
+    }
+
+    public WebElement getCloseNotificationButton(){
+        return driver.findElement(By.className("btnClose"));
+    }
+    public void clickOnCloseNotificationButton(){
+        getCloseNotificationButton().click();
+    }
 
 }
