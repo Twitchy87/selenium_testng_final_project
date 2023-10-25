@@ -38,4 +38,10 @@ public class LoginPage extends BasicPage{
     public void clickOnLoginButton(){
         getLoginButton().click();
     }
+
+    public void login(String email, String password) {
+        enterUserEmail(email);
+        enterUserPassword(password);
+        clickOnLoginButton();
+    }
 }
