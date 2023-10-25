@@ -60,4 +60,33 @@ public class SignupTests extends BasicTest{
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "/signup",
                 "Should be on signup page");
     }
+
+    @Test(priority = 4, retryAnalyzer = RetryAnalyzer.class)
+    public void signup(){
+        String name = "Ana Cvetkovic";
+        String email = "Ana.Cvetkovic@itbootcamp.rs";
+        String password = "12345";
+        String confirmPassword = "12345";
+
+        navPage.clickOnSignupButton();
+
+        wait
+                .withMessage("Url should be " + baseUrl + "/signup")
+                .until(ExpectedConditions.urlContains("/signup"));
+
+        signupPage.signup(name, email, password, confirmPassword);
+
+        wait
+                .withMessage("Url should be " + baseUrl + "/home")
+                .until(ExpectedConditions.urlContains("/home"));
+
+        messagePopUpPage.waitForNotificationPopUpToBeVisible();
+        Assert.assertEquals(messagePopUpPage.getNotificationPopUpTitle(),
+                "IMPORTANT: Verify your account",
+                "Notification title should be \"IMPORTANT: Verify your account\"");
+
+        messagePopUpPage.clickOnCloseNotificationButton();
+
+        navPage.clickOnLogoutButton();
+    }
 }
