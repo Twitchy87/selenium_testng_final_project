@@ -27,4 +27,15 @@ public class LocaleTests extends BasicTest{
                 "Landing",
                 "Header should read \"Landing\"");
     }
+
+    @Test(priority = 3, retryAnalyzer = RetryAnalyzer.class)
+    public void setLocaleToCN(){
+        navPage.clickOnLanguagesButton();
+        navPage.waitForLanguagesMenuToBeVisible();
+        navPage.clickOnCNButton();
+
+        Assert.assertEquals(landingPage.getHeaderText(),
+                "首页",
+                "Header should read \"首页\"");
+    }
 }
