@@ -31,4 +31,21 @@ public class CitiesPage extends BasicPage{
     public String getNewItemNameInputType(){
         return getNewItemNameInput().getAttribute("type");
     }
+    public void enterNewCity(String city){
+        getNewItemNameInput().clear();
+        getNewItemNameInput().sendKeys(city);
+    }
+
+    public WebElement getSaveButton(){
+        return driver.findElement(By.className("btnSave"));
+    }
+    public void clickOnSaveButton(){
+        getSaveButton().click();
+    }
+    public void waitForSaveButtonToBeClickable(){
+        wait
+                .withMessage("Save button should be clickable.")
+                .until(ExpectedConditions.elementToBeClickable(getSaveButton()));
+    }
+
 }
