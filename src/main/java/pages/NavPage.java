@@ -83,4 +83,11 @@ public class NavPage extends BasicPage{
         getESButton().click();
     }
 
+    public WebElement getCNButton(){
+        return driver.findElement(By.className("btnCN"));
+    }
+    public void clickOnCNButton(){
+        getCNButton().click();
+    }
+
 }
