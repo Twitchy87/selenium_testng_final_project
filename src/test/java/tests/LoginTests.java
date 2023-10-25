@@ -45,9 +45,7 @@ public class LoginTests extends BasicTest{
                 .withMessage("Url should be " + baseUrl + "/login")
                 .until(ExpectedConditions.urlContains("/login"));
 
-        loginPage.enterUserEmail(email);
-        loginPage.enterUserPassword(password);
-        loginPage.clickOnLoginButton();
+        loginPage.login(email, password);
 
         messagePopUpPage.waitForErrorPopUpToBeVisible();
         Assert.assertEquals(messagePopUpPage.getErrorPopUpMessage(),
@@ -69,9 +67,7 @@ public class LoginTests extends BasicTest{
                 .withMessage("Url should be " + baseUrl + "/login")
                 .until(ExpectedConditions.urlContains("/login"));
 
-        loginPage.enterUserEmail(email);
-        loginPage.enterUserPassword(password);
-        loginPage.clickOnLoginButton();
+        loginPage.login(email, password);
 
         messagePopUpPage.waitForErrorPopUpToBeVisible();
         Assert.assertEquals(messagePopUpPage.getErrorPopUpMessage(),
@@ -93,9 +89,7 @@ public class LoginTests extends BasicTest{
                 .withMessage("Url should be " + baseUrl + "/login")
                 .until(ExpectedConditions.urlContains("/login"));
 
-        loginPage.enterUserEmail(email);
-        loginPage.enterUserPassword(password);
-        loginPage.clickOnLoginButton();
+        loginPage.login(email, password);
 
         wait
                 .withMessage("Url should be " + baseUrl + "/home")
@@ -113,9 +107,7 @@ public class LoginTests extends BasicTest{
                 .withMessage("Url should be " + baseUrl + "/login")
                 .until(ExpectedConditions.urlContains("/login"));
 
-        loginPage.enterUserEmail(email);
-        loginPage.enterUserPassword(password);
-        loginPage.clickOnLoginButton();
+        loginPage.login(email, password);
 
         wait
                 .withMessage("Url should be " + baseUrl + "/home")
