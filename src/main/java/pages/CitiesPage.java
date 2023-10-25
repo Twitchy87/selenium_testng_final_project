@@ -100,4 +100,11 @@ public class CitiesPage extends BasicPage{
     public void clickOnClearSearchButton(){
         getClearSearchButton().click();
     }
+
+    public WebElement getDeleteButton(){
+        return driver.findElement(By.id("delete"));
+    }
+    public void clickOnDeleteButton(){
+        getDeleteButton().click();
+    }
 }
