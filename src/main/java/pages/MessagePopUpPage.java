@@ -51,4 +51,18 @@ public class MessagePopUpPage extends BasicPage{
         return driver.findElement(By.cssSelector(".success .v-snack__content")).getText();
     }
 
+    public void waitForDeleteWarningDialogToBeVisible(){
+        wait
+                .withMessage("Delete warning dialog should be visible.")
+                .until(ExpectedConditions.visibilityOfElementLocated(
+                        By.cssSelector(".v-dialog--active .v-card")));
+    }
+
+    public WebElement getDeleteButton(){
+        return driver.findElement(By.cssSelector(".v-dialog--active .v-card .red--text"));
+    }
+    public void clickOnDeleteButton(){
+        getDeleteButton().click();
+    }
+
 }
