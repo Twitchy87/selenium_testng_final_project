@@ -57,4 +57,38 @@ public class AdminCitiesTests extends BasicTest{
         Assert.assertEquals(citiesPage.getNewItemNameInputType(), "text",
                 "New Item name input type should be text.");
     }
+
+    @Test(priority = 3, retryAnalyzer = RetryAnalyzer.class)
+    public void createNewCity(){
+        String email = "admin@admin.com";
+        String password = "12345";
+        String city = "Nis";
+
+        navPage.clickOnLoginButton();
+
+        wait
+                .withMessage("Url should be " + baseUrl + "/login")
+                .until(ExpectedConditions.urlContains("/login"));
+
+        loginPage.login(email, password);
+
+        navPage.clickOnAdminButton();
+
+        navPage.waitForAdminMenuToBeVisible();
+        navPage.clickOnCitiesButton();
+
+        wait
+                .withMessage("Url should be " + baseUrl + "/admin/cities")
+                .until(ExpectedConditions.urlContains("/admin/cities"));
+
+        citiesPage.clickOnNewItemButton();
+        citiesPage.waitForNewItemDialogToBeVisible();
+        citiesPage.enterNewCity(city);
+        citiesPage.waitForSaveButtonToBeClickable();
+        citiesPage.clickOnSaveButton();
+        messagePopUpPage.waitForSuccessfulPopUpToBeVisible();
+        Assert.assertTrue(messagePopUpPage.getSuccessfulPopUpMessage().contains("Saved successfully"),
+                "Successful pop up message should be \"Saved successfully\"");
+
+    }
 }
