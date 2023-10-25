@@ -90,4 +90,14 @@ public class CitiesPage extends BasicPage{
 
     }
 
+    public String getNameOfCity(){
+        return driver.findElement(By.cssSelector("tr td:nth-child(2)")).getText();
+    }
+
+    public WebElement getClearSearchButton(){
+        return driver.findElement(By.xpath("//*[contains(@class,'layout')]//*[@class='v-input__append-inner'][1]"));
+    }
+    public void clickOnClearSearchButton(){
+        getClearSearchButton().click();
+    }
 }
