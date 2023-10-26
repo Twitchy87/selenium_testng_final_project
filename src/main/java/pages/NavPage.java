@@ -90,4 +90,11 @@ public class NavPage extends BasicPage{
         getCNButton().click();
     }
 
+    public WebElement getFRButton(){
+        return driver.findElement(By.className("btnFR"));
+    }
+    public void clickOnFRButton(){
+        getFRButton().click();
+    }
+
 }
