@@ -97,4 +97,11 @@ public class NavPage extends BasicPage{
         getFRButton().click();
     }
 
+    public WebElement getUAButton(){
+        return driver.findElement(By.className("btnUA"));
+    }
+    public void clickOnUAButton(){
+        getUAButton().click();
+    }
+
 }
