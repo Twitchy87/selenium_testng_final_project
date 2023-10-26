@@ -29,10 +29,7 @@ public class ProfileTests extends BasicTest{
                 .withMessage("Url should be " + baseUrl + "/profile")
                 .until(ExpectedConditions.urlContains("/profile"));
 
-
-//        Assert.assertEquals(profilePage.getEmailInputValue(),
-//                "admin@admin.com",
-//                "Email input value should be \"admin@admin.com\"");
+        profilePage.waitForEmailInputTextToBeVisible(email);
 
         navPage.clickOnLogoutButton();
 
