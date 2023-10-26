@@ -104,4 +104,11 @@ public class NavPage extends BasicPage{
         getUAButton().click();
     }
 
+    public WebElement getMyProfileLink(){
+        return driver.findElement(By.className("btnProfile"));
+    }
+    public void clickOnMyProfileLink(){
+        getMyProfileLink().click();
+    }
+
 }
