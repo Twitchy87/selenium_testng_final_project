@@ -49,4 +49,15 @@ public class LocaleTests extends BasicTest{
                 "Page d'atterrissage",
                 "Header should read \"Page d'atterrissage\"");
     }
+
+    @Test(priority = 5, retryAnalyzer = RetryAnalyzer.class)
+    public void setLocaleToUA(){
+        navPage.clickOnLanguagesButton();
+        navPage.waitForLanguagesMenuToBeVisible();
+        navPage.clickOnUAButton();
+
+        Assert.assertEquals(landingPage.getHeaderText(),
+                "Лендінг",
+                "Header should read \"Лендінг\"");
+    }
 }
