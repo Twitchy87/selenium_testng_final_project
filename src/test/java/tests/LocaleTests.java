@@ -38,4 +38,15 @@ public class LocaleTests extends BasicTest{
                 "首页",
                 "Header should read \"首页\"");
     }
+
+    @Test(priority = 4, retryAnalyzer = RetryAnalyzer.class)
+    public void setLocaleToFR(){
+        navPage.clickOnLanguagesButton();
+        navPage.waitForLanguagesMenuToBeVisible();
+        navPage.clickOnFRButton();
+
+        Assert.assertEquals(landingPage.getHeaderText(),
+                "Page d'atterrissage",
+                "Header should read \"Page d'atterrissage\"");
+    }
 }
